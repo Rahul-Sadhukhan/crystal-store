@@ -1,0 +1,110 @@
+profiles:
+  - springboot-web-jdk11-alpine
+
+owner:
+  group: RE-CRYSTAL-DEV
+
+setup:
+  releaseRefs: [ "main", "release-.*" ]
+
+deploy:
+  namespace: re-crystal
+  stages:
+    - name: dev
+      helm:
+        values:
+          min:
+            cpu: 600m
+            memory: 2048Mi
+          max:
+            cpu: 1200m
+            memory: 4096Mi
+          metadata:
+            labels:
+              strati.appkey: CRYSTAL_STORE_REVIEW_API
+              strati.env: dev
+      flows: [ pr, branch, release ]
+      target:
+        - cluster_id: [ scus-dev-a3 ]
+    - name: stage
+      helm:
+        values:
+          min:
+            cpu: 600m
+            memory: 2048Mi
+          max:
+            cpu: 1200m
+            memory: 4096Mi
+          metadata:
+            labels:
+              strati.appkey: CRYSTAL_STORE_REVIEW_API
+              strati.env: stage
+      flows: [ release ]
+      target:
+        - cluster_id: [ scus-stage-a3 ]
+      approvers:
+        groups: [ RE-CRYSTAL-DEV ]
+    - name: prod
+      helm:
+        values:
+          replicaCount: 2
+          min:
+            cpu: 900m
+            memory: 4096Mi
+          max:
+            cpu: 1500m
+            memory: 8192Mi
+          metadata:
+            labels:
+              strati.appkey: CRYSTAL_STORE_REVIEW_API
+              strati.env: prod
+      flows: [ release ]
+      target:
+        - cluster_id: [ scus-prod-a2, eus2-prod-a50 ]
+      approvers:
+        groups: [ RE-CRYSTAL-DEV ]
+  helm:
+    namespace: re-crystal
+    values:
+      metadata:
+        annotations:
+          sidecar.istio.io/inject: "true"
+          traffic.sidecar.istio.io/excludeOutboundPorts: 8080
+      secrets:
+        akeyless: true
+        file_refresh: true
+        config:
+          akeyless:
+            path: /Prod/WCNP/homeoffice/RE-CRYSTAL-DEV
+        files:
+          - destination: crystal-store-review-api-database.properties
+            content: crystal-store-review-api/{{$.kittExec.currentStage.name}}#database
+          - destination: crystal-store-review-api-cerberus.properties
+            content: crystal-store-review-api/{{$.kittExec.currentStage.name}}#cerberus
+          - destination: crystal-store-review-api-signature.properties
+            content: crystal-store-review-api/{{$.kittExec.currentStage.name}}#signature
+          - destination: crystal-rma-application.properties
+            content: common/rma/{{$.kittExec.currentStage.name}}#application
+          - destination: crystal-pingfed-certificate.properties
+            content: common/pingfed/{{$.kittExec.currentStage.name}}#certificate
+          - destination: crystal-cerberus-key.properties
+            content: common/cerberus/{{$.kittExec.currentStage.name}}#key
+          - destination: crystal-service-user.properties
+            content: common/service-user/{{$.kittExec.currentStage.name}}#user
+      env:
+        DYNATRACE_ENABLED: true
+        spring.profiles.active: "{{$.kittExec.currentStage.name}}"
+      readinessProbe:
+        path: /actuator/health
+        wait: 120
+      livenessProbe:
+        path: /actuator/health
+        wait: 120
+      networking:
+        httpsEnabled: true
+        httpEnabled: true
+        httpsRedirect: false
+
+notify:
+  slack:
+    channelName: re-crystal-builds

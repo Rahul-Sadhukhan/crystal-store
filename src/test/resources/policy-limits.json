@@ -1,0 +1,57 @@
+[
+  {
+    "policy": "createStoreReview",
+    "role": "manager"
+  },
+  {
+    "policy": "createStoreReview",
+    "role": "reviewer"
+  },
+  {
+    "policy": "assignStoreReview",
+    "role": "manager"
+  },
+  {
+    "policy": "assignStoreReview",
+    "role": "reviewer",
+    "limits": [
+      {
+        "attribute": "id",
+        "type": "expression",
+        "value": "#user.username == #attribute.textValue()"
+      }
+    ]
+  },
+  {
+    "policy": "viewStoreReview",
+    "role": "reviewer"
+  },
+  {
+    "policy": "viewStoreReview",
+    "role": "manager"
+  },
+  {
+    "policy": "editStoreReview",
+    "role": "manager"
+  },
+  {
+    "policy": "editStoreReview",
+    "role": "reviewer"
+  },
+  {
+    "policy": "viewHealthScore",
+    "role": "manager"
+  },
+  {
+    "policy": "viewHealthScore",
+    "role": "reviewer"
+  },
+  {
+    "policy": "viewStoreInfo",
+    "role": "manager"
+  },
+  {
+    "policy": "viewStoreInfo",
+    "role": "reviewer"
+  }
+]

@@ -1,0 +1,128 @@
+{
+  "businessUnit": {
+    "name": "ROGERS, AR",
+    "number": 1,
+    "banner": {
+      "code": "A1",
+      "description": "WM Supercenter"
+    },
+    "buID": 294201,
+    "type": {
+      "code": "100001",
+      "description": "Retail"
+    },
+    "openDate": "1962-07-02T00:00:00.000Z",
+    "publicClosure": {
+      "status": "OPEN"
+    },
+    "isGlassEnabled": false,
+    "physicalLocationInd": "true",
+    "status": {
+      "code": "5"
+    },
+    "replenishmentType": {
+      "code": "U"
+    },
+    "controllingCountry": {
+      "code": "US",
+      "name": "United States"
+    },
+    "language": [
+      {
+        "code": "101"
+      }
+    ],
+    "address": [
+      {
+        "type": {
+          "code": "Physical",
+          "description": "Physical Address"
+        },
+        "country": {
+          "code": "US",
+          "name": "United States"
+        }
+      }
+    ],
+    "hasDrivethruPharmacy": false,
+    "stateProvince": {
+      "id": "01",
+      "code": "AR",
+      "name": "ARKANSAS"
+    },
+    "buType": {
+      "code": "7"
+    },
+    "isBuNbrReUsed": false,
+    "isHomeShoppingCenterOfTheFuture": false,
+    "hierarchyBuType": {
+      "code": "100001"
+    }
+  },
+  "facilityDetails": [
+    {
+      "openDate": "1962-07-02T00:00:00.000Z",
+      "grossSize": [
+        {
+          "amount": 201314
+        }
+      ],
+      "geoFenceRadius": 204,
+      "location": {
+        "locationAddress": [
+          {
+            "type": {
+              "code": "Physical",
+              "description": "Physical Address"
+            },
+            "country": {
+              "code": "US",
+              "name": "United States"
+            }
+          }
+        ],
+        "countryCode": "US",
+        "country": "United States",
+        "timeZone": {
+          "code": "CST",
+          "name": "Central Standard Time"
+        },
+        "number": "1",
+        "locationTimeZone": {
+          "standard": "CST",
+          "isDSTObservable": true,
+          "dstTimeZone": {
+            "dstOffset": 3600,
+            "rawOffset": -21600,
+            "timeZoneId": "America/Chicago",
+            "timeZoneCode": "CDT",
+            "name": "Central Daylight Time"
+          }
+        }
+      }
+    }
+  ],
+  "baseDivision": {
+    "code": "1"
+  },
+  "baseAlignment": {
+    "segment": {
+      "code": "13"
+    },
+    "businessUnitOrgArea": {
+      "code": "02"
+    },
+    "subDivision": {
+      "code": "A"
+    },
+    "region": {
+      "code": "42"
+    },
+    "subRegion": {
+      "code": "99"
+    },
+    "market": {
+      "code": "323"
+    }
+  }
+}

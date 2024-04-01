@@ -1,0 +1,85 @@
+[
+  {
+    "policy": "createStoreReview",
+    "role": "store-review-manager"
+  },
+  {
+    "policy": "createStoreReview",
+    "role": "store-reviewer"
+  },
+  {
+    "policy": "assignStoreReview",
+    "role": "store-review-manager"
+  },
+  {
+    "policy": "assignStoreReview",
+    "role": "store-reviewer",
+    "limits": [
+      {
+        "attribute": "id",
+        "type": "expression",
+        "value": "#user.username == #attribute.textValue()"
+      }
+    ]
+  },
+  {
+    "policy": "viewStoreReview",
+    "role": "store-reviewer"
+  },
+  {
+    "policy": "viewStoreReview",
+    "role": "store-review-manager"
+  },
+  {
+    "policy": "viewStoreReview",
+    "role": "default"
+  },
+  {
+    "policy": "editStoreReview",
+    "role": "store-review-manager"
+  },
+  {
+    "policy": "editStoreReview",
+    "role": "store-reviewer"
+  },
+  {
+    "policy": "deleteSettingChangeLog",
+    "role": "store-review-manager"
+  },
+  {
+    "policy": "deleteSettingChangeLog",
+    "role": "store-reviewer"
+  },
+  {
+    "policy": "deleteInsight",
+    "role": "store-review-manager"
+  },
+  {
+    "policy": "deleteInsight",
+    "role": "store-reviewer"
+  },
+  {
+    "policy": "viewHealthScore",
+    "role": "store-review-manager"
+  },
+  {
+    "policy": "viewHealthScore",
+    "role": "store-reviewer"
+  },
+  {
+    "policy": "viewHealthScore",
+    "role": "default"
+  },
+  {
+    "policy": "viewStoreInfo",
+    "role": "store-review-manager"
+  },
+  {
+    "policy": "viewStoreInfo",
+    "role": "store-reviewer"
+  },
+  {
+    "policy": "viewStoreInfo",
+    "role": "default"
+  }
+]

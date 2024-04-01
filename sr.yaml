@@ -1,0 +1,78 @@
+schemaVersion: 1.0.0
+notify:
+  slack:
+    channelName: re-crystal-builds
+applications:
+  - name: crystal-store-review-api
+    key: CRYSTAL_STORE_REVIEW_API
+    description: Crystal Store Review API
+    organization: re-crystal
+    teamRostersProductId: 2446
+    companyCatalog: true
+    businessCriticality: MAJOR
+    communication:
+      slack:
+        - channel: re-crystal
+      email:
+        - address: RE-Crystal@email.wal-mart.com
+    members:
+      - homeoffice\r0r06we
+      - homeoffice\s0m03lf
+      - homeoffice\s0s0g53
+      - homeoffice\r0h0245
+      - homeoffice\m0p08ga
+    environments:
+      - name: dev
+        type: DEVELOPMENT
+        serviceType: REST
+        consumerIdInfos:
+          - consumerId: 1bcd4923-c21d-4966-846c-806d300a9263
+            publicKey: MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEApf1u9mlUHgwxW6t1J8L6ANz6Z8SR1Ilau/XzBrAFdluVQuieS0fIthZJfVS5g6gpm9AoARanhFia2Jtc0MJ8b0FRUwOK5uRZtCPOwQ/dwD/wxK7q2XFGZZrByQIeZhdaYMRarAA1BjMw5Lp1p/E+AyxVNg5PB+GLCxpAqBvr+ED4ss5WFWSo1IDZj642ul01/3AQERbLViX47cYidXWbGGp4iHIWLcpp9jCka4MJXi0CtNvdq/lzqit+LR/N4wRnboLvGyukZ4+Vw7VvjdWUF6dABSPzaLkiQhhTeA/KtYnOiXySP8YXkiQjbvytKSroDInwOxHLG5LgQPbyvbs70wIDAQAB
+        serviceMeshConfig:
+          deploymentType: WCNP
+          defaultEgressConfig:
+            signatureGenKeyPath: /etc/secrets
+          defaultIngressConfig:
+            requestTimeout: 180000
+            retries: 3
+          ingressListeners:
+            - protocol: HTTP
+              applicationHost: 127.0.0.1
+              applicationPort: 8080
+              enablePolicyEngine: false
+      - name: stage
+        type: STAGING
+        serviceType: REST
+        consumerIdInfos:
+          - consumerId: 1bcd4923-c21d-4966-846c-806d300a9263
+            publicKey: MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEApf1u9mlUHgwxW6t1J8L6ANz6Z8SR1Ilau/XzBrAFdluVQuieS0fIthZJfVS5g6gpm9AoARanhFia2Jtc0MJ8b0FRUwOK5uRZtCPOwQ/dwD/wxK7q2XFGZZrByQIeZhdaYMRarAA1BjMw5Lp1p/E+AyxVNg5PB+GLCxpAqBvr+ED4ss5WFWSo1IDZj642ul01/3AQERbLViX47cYidXWbGGp4iHIWLcpp9jCka4MJXi0CtNvdq/lzqit+LR/N4wRnboLvGyukZ4+Vw7VvjdWUF6dABSPzaLkiQhhTeA/KtYnOiXySP8YXkiQjbvytKSroDInwOxHLG5LgQPbyvbs70wIDAQAB
+        serviceMeshConfig:
+          deploymentType: WCNP
+          defaultEgressConfig:
+            signatureGenKeyPath: /etc/secrets
+          defaultIngressConfig:
+            requestTimeout: 180000
+            retries: 3
+          ingressListeners:
+            - protocol: HTTP
+              applicationHost: 127.0.0.1
+              applicationPort: 8080
+              enablePolicyEngine: false
+      - name: prod
+        type: PRODUCTION
+        serviceType: REST
+        consumerIdInfos:
+          - consumerId: f5ab6e75-67ae-4cd2-abb0-5936ed1d6b0b
+            publicKey: MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA1fTHmaTMmFa2UK7CPBwtnbTR3lLVpKqCO+ZxxSWaEvDZX/iK2G/Ofi+lwGMyeyRW+fI0tUdChbcfs/nujOArjgQ7K9uHiMwGreVVcOQo7T/pFfo3kBdPrjyBk0BnQmJ1HTo7jf3riRU9j/367o3b+dDMI4wLkLjztcWGQq5HKAUDKRX4as3M/KU9g7BlhxHk/WGnMUd/gsGkb49cL6D1VFGOALPUmPbjBsaoW1oj6M0eJDvLhvNeLmJ+rLKiQxkOA73afuwMIbf9OjGDZoiSFTjTHkFrdIF894rrUWbVlAwsZXOUOjyFkB88twXC3ZVD5YItXnr0gOUH+DV4izU/uQIDAQAB
+        serviceMeshConfig:
+          deploymentType: WCNP
+          defaultEgressConfig:
+            signatureGenKeyPath: /etc/secrets
+          defaultIngressConfig:
+            requestTimeout: 180000
+            retries: 3
+          ingressListeners:
+            - protocol: HTTP
+              applicationHost: 127.0.0.1
+              applicationPort: 8080
+              enablePolicyEngine: false

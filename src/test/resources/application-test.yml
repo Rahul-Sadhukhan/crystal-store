@@ -1,0 +1,21 @@
+tenant-config:
+  tenants:
+    US:
+      store-review:
+        url: mongodb://test
+        database: store-review
+      setting-change-log:
+        url: mongodb://test
+        database: setting-change-log
+      metadata:
+        url: mongodb://test
+        database: metadata
+      idn:
+        url: mongodb://test
+        database: idn
+      azure:
+        url: jdbc:sqlserver://${azuresql.host}:${azuresql.port};database=${azuresql.database};user=${azuresql.username};password=${azuresql.password};encrypt=true;trustServerCertificate=false;hostNameInCertificate=*.database.windows.net;loginTimeout=30;authentication=ActiveDirectoryPassword;sslProtocol=TLSv1.2;
+        username: ${azuresql.username}
+        password: ${azuresql.password}
+        driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
+  defaultTenant: US
